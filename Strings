@@ -1,0 +1,159 @@
+1.
+def merge_alternately(word1: str, word2: str) -> str:
+    i, j = 0, 0
+    result = []
+    
+    while i < len(word1) and j < len(word2):
+        result.append(word1[i])
+        result.append(word2[j])
+        i += 1
+        j += 1
+    while i < len(word1):
+        result.append(word1[i])
+        i += 1
+    while j < len(word2):
+        result.append(word2[j])
+        j += 1
+    
+    return ''.join(result)
+  
+  2.
+import math
+def gcd_of_strings(str1: str, str2: str) -> str:
+    def gcd(a, b):
+        while b:
+            a, b = b, a % b
+        return a
+
+    len1, len2 = len(str1), len(str2)
+    gcd_len = gcd(len1, len2)
+    
+    candidate = str1[:gcd_len]
+    
+    if candidate * (len1 // gcd_len) == str1 and candidate * (len2 // gcd_len) == str2:
+        return candidate
+    else:
+        return ""
+
+3.
+    def kidsWithCandies(candies, extraCandies):
+    max_candies = max(candies)
+    result = []
+    
+    for candy in candies:
+        if candy + extraCandies >= max_candies:
+            result.append(True)
+        else:
+            result.append(False)
+    
+    return result
+candies = [2, 3, 5, 1, 3]
+extraCandies = 3
+print(kidsWithCandies(candies, extraCandies))  # Output: [True, True, True, False, True]
+str1 = "ABCABC"
+str2 = "ABC"
+print(gcd_of_strings(str1, str2))  # Output: "ABC"
+
+4.
+def canPlaceFlowers(flowerbed, n):
+    length = len(flowerbed)
+    
+    for i in range(length):
+        if flowerbed[i] == 0:
+            empty_prev = (i == 0) or (flowerbed[i - 1] == 0)
+            empty_next = (i == length - 1) or (flowerbed[i + 1] == 0)
+            
+            if empty_prev and empty_next:
+                flowerbed[i] = 1
+                n -= 1
+                
+                if n <= 0:
+                    return True
+    
+    return n <= 0
+  
+5.
+  def reverseVowels(s: str) -> str:
+    vowels = "aeiouAEIOU"
+    s_list = list(s)
+    i, j = 0, len(s) - 1
+
+    while i < j:
+        while i < j and s_list[i] not in vowels:
+            i += 1
+        while i < j and s_list[j] not in vowels:
+            j -= 1
+        if i < j:
+            s_list[i], s_list[j] = s_list[j], s_list[i]
+            i += 1
+            j -= 1
+    
+    return ''.join(s_list)
+
+  6.
+def reverseWords(s: str) -> str:
+    words = s.split()
+    reversed_words = words[::-1]
+    result = ' '.join(reversed_words)
+    
+    return result
+
+7.
+def productExceptSelf(nums):
+    n = len(nums)
+    left_products = [0] * n
+    right_products = [0] * n
+    answer = [0] * n
+    left_products[0] = 1
+    for i in range(1, n):
+        left_products[i] = left_products[i - 1] * nums[i - 1]
+    right_products[n - 1] = 1
+    for i in range(n - 2, -1, -1):
+        right_products[i] = right_products[i + 1] * nums[i + 1]
+    for i in range(n):
+        answer[i] = left_products[i] * right_products[i]
+    return answer
+  
+8.  
+def increasingTriplet(nums):
+    first = float('inf')
+    second = float('inf')
+    
+    for n in nums:
+        if n <= first:
+            first = n  # Update first if n is smaller
+        elif n <= second:
+            second = n  # Update second if n is greater than first but smaller than second
+        else:
+            return true  # We found a number greater than both first and second
+    
+    return False
+
+9.
+def compress(chars):
+    read = 0
+    write = 0
+    
+    while read < len(chars):
+        char = chars[read]
+        count = 0
+        while read < len(chars) and chars[read] == char:
+            read += 1
+            count += 1
+        chars[write] = char
+        write += 1
+        if count > 1:
+            for digit in str(count):
+                chars[write] = digit
+                write += 1
+    
+    return write
+
+10.
+def moveZeroes(nums):
+    lastNonZeroFoundAt = 0
+    for current in range(len(nums)):
+        if nums[current] != 0:
+            nums[lastNonZeroFoundAt], nums[current] = nums[current], nums[lastNonZeroFoundAt]
+            lastNonZeroFoundAt += 1
+    
