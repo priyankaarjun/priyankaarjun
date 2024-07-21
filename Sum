@@ -1,0 +1,120 @@
+1.def longestSubarray(nums):
+    left = 0
+    max_len = 0
+    zero_count = 0
+
+    for right in range(len(nums)):
+        if nums[right] == 0:
+            zero_count += 1
+        
+        while zero_count > 1:
+            if nums[left] == 0:
+                zero_count -= 1
+            left += 1
+    return max_len if max_len > 0 else 0
+
+2.def longestOnes(nums, k):
+    left = 0
+    max_len = 0
+    zeros_count = 0
+    for right in range(len(nums)):
+        if nums[right] == 0:
+            zeros_count += 1
+        while zeros_count > k:
+            if nums[left] == 0:
+                zeros_count -= 1
+            left += 1
+        max_len = max(max_len, right - left + 1)
+    return max_len
+
+3.def maxVowels(s, k):
+    vowels = set('aeiou')
+    def count_vowels(substr):
+        return sum(1 for char in substr if char in vowels)
+    max_vowel_count = count_vowels(s[:k])
+    current_vowel_count = max_vowel_count
+    for i in range(k, len(s)):
+        if s[i - k] in vowels:
+            current_vowel_count -= 1
+        if s[i] in vowels:
+            current_vowel_count += 1
+        max_vowel_count = max(max_vowel_count, current_vowel_count)
+    
+    return max_vowel_count
+
+4.def findMaxAverage(nums, k):
+    n = len(nums)
+    current_sum = sum(nums[:k])
+    max_average = current_sum / k
+    for i in range(k, n):
+        current_sum = current_sum - nums[i - k] + nums[i]
+        max_average = max(max_average, current_sum / k)
+    return max_average
+
+                   
+  5.def unique_occurrences(arr):
+    from collections import Counter
+    count = Counter(arr)
+    occurrences = list(count.values())
+    return len(occurrences) == len(set(occurrences))      
+
+  6.def find_difference(nums1, nums2):
+    set1 = set(nums1)
+    set2 = set(nums2)
+
+    only_in_nums1 = list(set1 - set2)
+    only_in_nums2 = list(set2 - set1)
+
+    return [only_in_nums1, only_in_nums2]
+
+ 7.def highest_altitude(gain):
+    current_altitude = 0
+    max_altitude = 0
+
+    for g in gain:
+        current_altitude += g
+        if current_altitude > max_altitude:
+            max_altitude = current_altitude
+
+    return max_altitude
+
+8.def pivot_index(nums):
+    total_sum = sum(nums)
+    left_sum = 0
+
+    for i, num in enumerate(nums):
+        # Right sum is total sum minus left sum minus current element
+        if left_sum == (total_sum - left_sum - num):
+            return i
+        left_sum += num
+
+    return -1         
+
+from collections import Counter
+
+9.def areClose(word1, word2):
+    if len(word1) != len(word2):
+        return False
+    count1 = Counter(word1)
+    count2 = Counter(word2)
+    if set(count1.keys()) != set(count2.keys()):
+        return False
+    return sorted(count1.values()) == sorted(count2.values())
+
+10.def countEqualPairs(grid):
+    from collections import Counter
+    
+    n = len(grid)
+    rows = [tuple(grid[i]) for i in range(n)]
+    columns = [tuple(grid[i][j] for i in range(n)) for j in range(n)
+    row_count = Counter(rows)
+    col_count = Counter(columns)
+    result = 0
+    for row in row_count:
+        if row in col_count:
+            result += row_count[row] * col_count[row]
+    
+    return result
+
+                     
+                   
