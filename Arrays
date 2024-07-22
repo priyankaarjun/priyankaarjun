@@ -105,3 +105,55 @@ grid = [
 ]
 print(equal_pairs(grid))  # Output: 3
                   
+7.def longestSubarray(nums):
+    left = 0
+    max_len = 0
+    zero_count = 0
+
+    for right in range(len(nums)):
+        if nums[right] == 0:
+            zero_count += 1
+        
+        while zero_count > 1:
+            if nums[left] == 0:
+                zero_count -= 1
+            left += 1
+    return max_len if max_len > 0 else 0
+
+8.def longestOnes(nums, k):
+    left = 0
+    max_len = 0
+    zeros_count = 0
+    for right in range(len(nums)):
+        if nums[right] == 0:
+            zeros_count += 1
+        while zeros_count > k:
+            if nums[left] == 0:
+                zeros_count -= 1
+            left += 1
+        max_len = max(max_len, right - left + 1)
+    return max_len
+
+9.def maxVowels(s, k):
+    vowels = set('aeiou')
+    def count_vowels(substr):
+        return sum(1 for char in substr if char in vowels)
+    max_vowel_count = count_vowels(s[:k])
+    current_vowel_count = max_vowel_count
+    for i in range(k, len(s)):
+        if s[i - k] in vowels:
+            current_vowel_count -= 1
+        if s[i] in vowels:
+            current_vowel_count += 1
+        max_vowel_count = max(max_vowel_count, current_vowel_count)
+    
+    return max_vowel_count
+
+10.def findMaxAverage(nums, k):
+    n = len(nums)
+    current_sum = sum(nums[:k])
+    max_average = current_sum / k
+    for i in range(k, n):
+        current_sum = current_sum - nums[i - k] + nums[i]
+        max_average = max(max_average, current_sum / k)
+    return max_average
