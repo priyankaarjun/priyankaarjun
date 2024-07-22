@@ -1,0 +1,107 @@
+1.def highest_altitude(gain):
+    current_altitude = 0
+    max_altitude = 0
+
+    for g in gain:
+        current_altitude += g
+        max_altitude = max(max_altitude, current_altitude)
+    
+    return max_altitude
+
+2.def pivot_index(nums):
+    total_sum = sum(nums)
+    left_sum = 0
+    
+    for i, num in nums
+        right_sum = total_sum - left_sum - num
+        
+        if left_sum == right_sum:
+            return i
+        
+        left_sum += num
+    
+    return -1
+
+3.def find_difference(nums1, nums2):
+    set1 = set(nums1)
+    set2 = set(nums2)
+    only_in_nums1 = list(set1 - set2)
+    only_in_nums2 = list(set2 - set1)
+    
+    return [only_in_nums1, only_in_nums2]
+
+# Example usage:
+nums1 = [1, 2, 3]
+nums2 = [2, 4, 6]
+print(find_difference(nums1, nums2))  
+
+4.def unique_occurrences(arr):
+    occurrence_count = {}
+    for num in arr:
+        if num in occurrence_count:
+            occurrence_count[num] += 1
+        else:
+            occurrence_count[num] = 1
+    occurrences_seen = set()
+    for count in occurrence_count.values():
+        if count in occurrences_seen:
+            return False
+        occurrences_seen.add(count)
+    
+    return True
+# Example usage:
+arr = [1, 2, 2, 1, 1, 3]
+print(unique_occurrences(arr))  
+
+5.def close_strings(word1, word2):
+    if set(word1) != set(word2):
+        return False
+    from collections import Counter
+    counter1 = Counter(word1)
+    counter2 = Counter(word2)
+    if sorted(counter1.values()) != sorted(counter2.values()):
+        return False
+
+    return True
+
+# Example usage:
+word1 = "abc"
+word2 = "bca"
+print(close_strings(word1, word2))  # Output: True
+
+word1 = "aabbcc"
+word2 = "abcabc"
+print(close_strings(word1, word2))  # Output: True
+
+word1 = "aabbcc"
+word2 = "abc"
+print(close_strings(word1, word2))  # Output: False
+
+6.def equal_pairs(grid):
+    n = len(grid)
+    rows = [tuple(grid[i]) for i in range(n)]
+    cols = [tuple(grid[i][j] for i in range(n)) for j in range(n)]
+    count = 0
+    for row in rows:
+        for col in cols:
+            if row == col:
+                count += 1
+    
+    return count
+
+# Example usage:
+grid = [
+    [3, 2, 1],
+    [1, 7, 6],
+    [2, 7, 7]
+]
+print(equal_pairs(grid))  # Output: 1
+
+grid = [
+    [3, 1, 2, 2],
+    [1, 4, 4, 2],
+    [2, 4, 2, 2],
+    [2, 4, 2, 2]
+]
+print(equal_pairs(grid))  # Output: 3
+                  
