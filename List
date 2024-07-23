@@ -1,0 +1,91 @@
+1.
+with open("my_file.txt", "a") as f:
+   f.write("new text")
+
+2.
+dt = {'a': 'juice', 'b': 'grill', 'c': 'corn'}
+
+for key, value in dt.items():
+    print(key, value)
+
+3.
+list_1 = [1, 'a']
+list_2 = [3, 4, 5]
+
+list_joined = list_1 + list_2
+print(list_joined)
+
+4.
+freq = ['a', 1, 'a', 4, 3, 2, 'a'].count('a')
+print(freq)
+
+5.
+import os
+file_details = os.path.splitext('/path/file.ext')
+print(file_details)
+print(file_details[1])
+
+6.
+import random
+
+my_list = [1, 'a', 32, 'c', 'd', 31]
+print(random.choice(my_list))
+
+7.
+my_list = ['a', 'b', 'c', 'd', 'e']
+
+# print the last element
+print(my_list[-1])
+
+8.my_string = '''The only way to
+learn to program is
+by writing code.'''
+
+print(my_string)
+
+9.
+my_list = [[1], [2, 3], [4, 5, 6, 7]]
+
+flat_list = [num for sublist in my_list for num in sublist]
+print(flat_list)
+
+10.
+  my_list = []
+  if not my_list:
+    print("the list is empty")
+
+11.
+balance_str = "1500"
+balance_int = int(balance_str)
+
+# print the type
+print(type(balance_int))
+
+# print the value
+print(balance_int)    
+
+12.
+dt = {5:4, 1:6, 6:3}
+sorted_dt = {key: value for key, value in sorted(dt.items(), key=lambda item: item[1])}
+print(sorted_dt)       
+
+13. 
+my_list = [1, 2, 3, 4, 5]
+print(my_list[:])     
+
+14.
+dt = {5:4, 1:6, 6:3}
+sorted_dt = {key: value for key, value in sorted(dt.items(), key=lambda item: item[1])}
+print(sorted_dt)      
+
+15.
+my_string = "I love python."
+
+# prints "love"
+print(my_string[2:6])
+
+# prints "love python."
+print(my_string[2:])
+
+# prints "I love python"
+print(my_string[:-1])             
